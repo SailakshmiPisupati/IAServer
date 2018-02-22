@@ -4,21 +4,18 @@
 * @Last Modified by:   Saila
 * @Last Modified time: 2017-10-24 14:31:35
 */
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : '< MySQL username >',
-  password : '< MySQL password >',
-  database : '<your database name>'
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('iaserver','root','admin',{
+	host: 'localhost',
+	dialect : 'mysql',
+
 });
 
-connection.connect();
-
-connection.query('SELECT * from < table name >', function(err, rows, fields) {
-  if (!err)
-    console.log('The solution is: ', rows);
-  else
-    console.log('Error while performing Query.');
+sequelize.authenticate().then(() =>{
+	console.log('Connection has been established successfully!');
+})
+.catch(err=>{
+	console.error('Unable to connect to the database!');
 });
 
-connection.end();
+

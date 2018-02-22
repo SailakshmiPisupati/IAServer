@@ -7,9 +7,3 @@
 
 const express = require('express')
 , router = express.Router();
-
-
-// router.post('/saveData', function(req,res,next){
-// 	var JsonData = req.JsonData;
-// });
-
